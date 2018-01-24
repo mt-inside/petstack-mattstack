@@ -9,7 +9,7 @@
 
 - name: stop gnome-keyring shadowing ssh-agent
   copy:
-    source: /etc/xdg/autostart/gnome-keyring-ssh.desktop
+    src: /etc/xdg/autostart/gnome-keyring-ssh.desktop
     dest: /home/matt/.config/autostart/
     remote_src: true
 

@@ -38,3 +38,16 @@
   with_items:
           - qemu-kvm
           - bridge-utils
+- name: install github cmdline
+  unarchive:
+    src: https://github.com/github/hub/releases/download/v2.3.0-pre10/hub-linux-amd64-2.3.0-pre10.tgz
+    dest: /usr/local/
+    remote_src: true
+    extra_opts: ["--strip=1"]
+- name: github cli completion
+  file:
+    src: /usr/local/etc/hub.bash_completion.sh
+    dest: /home/matt/.completion.d/hub
+    state: link
+    owner: matt
+    group: matt
