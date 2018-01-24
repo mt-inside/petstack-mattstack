@@ -1,0 +1,40 @@
+---
+# Only system-level stuff. E.g. golang compilation should be done in a container
+- name: install basics
+  apt: name={{item}} state=installed
+  with_items:
+          - apt-transport-https
+          - ca-certificates
+          - software-properties-common
+          - debconf-utils
+- name: install filesystems
+  apt: name={{item}} state=installed
+  with_items:
+          - exfat-fuse
+- name: install networking utils
+  apt: name={{item}} state=installed
+  with_items:
+          - ebtables
+          - ethtool
+- name: install useful cli
+  apt: name={{item}} state=installed
+  with_items:
+          - git
+          - vim
+          - tmux
+          - bash-completion
+- name: install hardware pkgs
+  apt: name={{item}} state=installed
+  with_items:
+          - lsscsi
+          - lm-sensors
+          - dstat
+- name: install dev pkgs
+  apt: name={{item}} state=installed
+  with_items:
+          - build-essential
+- name: install virt pkgs
+  apt: name={{item}} state=installed
+  with_items:
+          - qemu-kvm
+          - bridge-utils

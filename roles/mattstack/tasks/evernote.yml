@@ -1,0 +1,9 @@
+---
+- name: nixnote repo
+  apt_repository:
+          repo: deb ppa:nixnote/nixnote2-daily artful stable
+
+- name: install nixnote pkgs
+  apt: name={{item}} state=installed
+  with_items:
+          - nixnote2

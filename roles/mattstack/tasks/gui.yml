@@ -1,0 +1,22 @@
+---
+- name: install desktop pkgs
+  apt: name={{item}} state=installed
+  with_items:
+          - i3
+          - rxvt-unicode-256color # i3wm picks this for preference if it's installed
+          - gnome-tweak-tool
+          - vim-gtk3
+
+- name: stop gnome-keyring shadowing ssh-agent
+  copy:
+    source: /etc/xdg/autostart/gnome-keyring-ssh.desktop
+    dest: /home/matt/.config/autostart/
+    remote_src: true
+
+- name: stop gnome-keyring shadowing ssh-agent
+  lineinfile:
+    path: /home/matt/.config/autostart/gnome-keyring-ssh.desktop
+    line: 'Hidden=true'
+
+- name: focus follows mouse
+  command: gsettings set org.gnome.desktop.wm.preferences focus-mode 'sloppy'

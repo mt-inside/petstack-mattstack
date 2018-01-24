@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  tasks:
+          - debug:
+                  msg: "Starting mattstack"
+          - include_role:
+                  name: mattstack
+          - debug:
+                  msg: "Finsished mattstack"
+  become: yes
+  become_method: sudo

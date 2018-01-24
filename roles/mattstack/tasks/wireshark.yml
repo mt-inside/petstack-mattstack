@@ -1,0 +1,12 @@
+---
+- name: configure wireshark as setuid
+  debconf:
+          name: wireshark-common
+          question: wireshark-common/install-setuid
+          vtype: boolean
+          value: true
+- name: install network sniffers
+  apt: name={{item}} state=installed
+  with_items:
+          - wireshark
+          - ettercap-text-only

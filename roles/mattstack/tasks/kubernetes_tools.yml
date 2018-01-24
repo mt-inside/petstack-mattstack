@@ -1,0 +1,36 @@
+---
+- name: google cloud repo key
+  # For both cloud-sdk and kubernetes
+  apt_key:
+          url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+          state: present
+
+- name: google cloud sdk repo
+  apt_repository:
+          repo: deb http://packages.cloud.google.com/apt cloud-sdk-xenial main
+          state: present
+
+- name: kubernetes repo
+  apt_repository:
+          repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+          state: present
+
+- name: install google cloud, k8s tools
+  apt: name={{item}} state=installed
+  with_items:
+          - google-cloud-sdk
+          - kubectl
+# TODO (tag with "completion") symlink /usr/share/google-cloud-sdk /home/matt/.completion.d/gcloud
+# TODO (tag with "completion") run kubectl completion > /home/matt/.completion.d/kubectl
+
+- name: download istioctl
+  unarchive:
+    src: https://github.com/istio/istio/releases/download/0.4.0/istio-0.4.0-linux.tar.gz 
+    dest: /tmp/
+    remote_src: true
+- name: install istioctl
+  copy:
+    remote_src: true
+    src: /tmp/istio-0.4.0/bin/istioctl
+    dest: /usr/local/bin/
+    mode: 0755

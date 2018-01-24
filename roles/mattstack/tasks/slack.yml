@@ -1,0 +1,8 @@
+---
+- name: download slack package
+  curl: https://downloads.slack-edge.com/linux_releases/slack-desktop-3.0.5-amd64.deb
+  dst: /tmp
+ 
+- name: install slack
+  apt:
+          file: /tmp/slack-desktop-3.0.5-amd64.deb

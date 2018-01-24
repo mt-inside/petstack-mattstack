@@ -1,0 +1,31 @@
+---
+- shell: lsb_release -cs
+  register: release_name
+
+- name: docker repo key
+  apt_key:
+          url: https://download.docker.com/linux/ubuntu/gpg
+          state: present
+
+- name: docker repo
+  apt_repository:
+          #repo: deb https://download.docker.com/linux/ubuntu {{ release_name.stdout }} stable
+          repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu artful stable
+          state: present
+
+- name: install docker pkgs
+  apt: name={{item}} state=installed
+  with_items:
+          - docker-ce
+
+- name: enable docker services
+  systemd:
+          name: docker
+          enabled: yes
+          masked: no
+
+- name: add {{ admin_user }} to docker group
+  user:
+          name: "{{ admin_user }}"
+          groups: docker
+          append: yes

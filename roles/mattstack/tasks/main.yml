@@ -1,0 +1,11 @@
+---
+- include: sysconfig.yml tags=sysconfig
+- include: tooling.yml tags=tooling
+- include: gui.yml tags=gui
+- include: wireshark.yml tags=wireshark
+- include: docker.yml tags=docker
+- include: kubernetes_tools.yml tags=kubernetes_tools
+- include: spotify.yml tags=spotify
+#- include: evernote.yml tags=evernote
+- include: chrome.yml tags=chrome
+- include: vault.yml tags=vault
