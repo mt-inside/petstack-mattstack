@@ -3,9 +3,15 @@
   apt: name={{item}} state=installed
   with_items:
           - i3
-          - rxvt-unicode-256color # i3wm picks this for preference if it's installed
+          - rxvt-unicode-256color
           - gnome-tweak-tool
           - vim-gtk3
+
+# Vim, Chrome, etc all seem to take over as the auto alternative (ubuntu's preference I guess). Urxvt does not.
+- name: set urxvt as Debian's default terminal emulator
+  alternatives:
+    name: x-terminal-emulator
+    path: /usr/bin/urxvt
 
 - name: stop gnome-keyring shadowing ssh-agent
   copy:
