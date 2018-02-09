@@ -16,6 +16,10 @@
   with_items:
           - ebtables
           - ethtool
+- name: install system mgmt packages
+  apt: name={{item}} state=installed
+  with_items:
+          - d-feet #dbus viewer
 - name: install useful cli
   apt: name={{item}} state=installed
   with_items:
@@ -30,6 +34,13 @@
           - lsscsi
           - lm-sensors
           - dstat
+          - powertop
+          - cpufrequtils
+          - laptop-mode-tools
+          - acpi
+          - acpi-call-dkms
+          - acpitail
+          - numactl
 - name: install dev pkgs
   apt: name={{item}} state=installed
   with_items:
@@ -40,6 +51,17 @@
           - qemu-kvm
           - libvirt-bin
           - bridge-utils
+- name: add {{ admin_user }} to libvirt group
+  user:
+          name: "{{ admin_user }}"
+          groups: [libvirt, libvirt-qemu]
+          append: yes
+- name: install graphics packages
+  apt: name={{item}} state=installed
+  with_items:
+          - inkscape
+          - imagemagick
+          - gimp
 - name: install github cmdline
   unarchive:
     src: https://github.com/github/hub/releases/download/v2.3.0-pre10/hub-linux-amd64-2.3.0-pre10.tgz
