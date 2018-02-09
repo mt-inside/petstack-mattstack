@@ -64,6 +64,7 @@
           - gimp
 - name: install github cmdline
   unarchive:
+    creates: /usr/local/bin/hub
     src: https://github.com/github/hub/releases/download/v2.3.0-pre10/hub-linux-amd64-2.3.0-pre10.tgz
     dest: /usr/local/
     remote_src: true
