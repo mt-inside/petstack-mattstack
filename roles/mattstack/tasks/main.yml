@@ -1,5 +1,5 @@
 ---
-- include: sysconfig.yml tags=sysconfig
+- include: boot.yml tags=boot
 - include: tooling.yml tags=tooling
 - include: gui.yml tags=gui
 - include: wireshark.yml tags=wireshark
