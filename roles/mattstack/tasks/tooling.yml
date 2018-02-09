@@ -38,6 +38,7 @@
   apt: name={{item}} state=installed
   with_items:
           - qemu-kvm
+          - libvirt-bin
           - bridge-utils
 - name: install github cmdline
   unarchive:

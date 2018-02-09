@@ -34,3 +34,13 @@
     src: /tmp/istio-0.4.0/bin/istioctl
     dest: /usr/local/bin/
     mode: 0755
+- name: install minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: /usr/local/bin/minikube
+    mode: 0775
+- name: install minikube kvm2 driver
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2
+    dest: /usr/local/bin/docker-machine-driver-kvm2
+    mode: 0775
