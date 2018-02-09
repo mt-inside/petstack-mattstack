@@ -75,3 +75,13 @@
     state: link
     owner: matt
     group: matt
+- name: install pomodoro
+  apt: name={{item}} state=installed
+  with_items:
+          - ruby
+          - ruby-dev
+- name: install pomodoro
+  gem: name={{item}} state=present
+  with_items:
+          - libnotify
+          - pomo
