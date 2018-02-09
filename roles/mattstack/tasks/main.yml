@@ -9,3 +9,4 @@
 #- include: evernote.yml tags=evernote
 - include: chrome.yml tags=chrome
 - include: vault.yml tags=vault
+- include: dev.yml tags=dev
