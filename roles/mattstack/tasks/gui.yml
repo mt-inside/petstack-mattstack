@@ -7,6 +7,11 @@
           - gnome-tweak-tool
           - vim-gtk3
 
+- name: install graphics driver packages
+  apt: name={{item}} state=installed
+  with_items:
+          - mesa-utils
+
 # Vim, Chrome, etc all seem to take over as the auto alternative (ubuntu's preference I guess). Urxvt does not.
 - name: set urxvt as Debian's default terminal emulator
   alternatives:
