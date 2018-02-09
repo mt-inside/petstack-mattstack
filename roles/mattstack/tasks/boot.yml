@@ -1,0 +1,11 @@
+---
+- name: Grub config settings
+  copy:
+    src: grub/default
+    dest: /etc/default/grub
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Update Grub
+  command: update-grub
