@@ -3,3 +3,10 @@
   apt: name={{item}} state=installed
   with_items:
     - golang-go
+- name: install go run
+  command: go get -u github.com/erning/gorun
+  become: true
+  become_user: matt
+
+  #TODO@ add startupscript to register go scripts:
+  #echo ':golang:E::go::/home/matt/work/src/go/bin/gorun:OC' | sudo tee /proc/sys/fs/binfmt_misc/register
