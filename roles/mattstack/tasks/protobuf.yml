@@ -1,0 +1,10 @@
+---
+- name: install protobuf compiler (generic + well-known-types)
+  #apt:protobuf-compiler # out of date and doesn't contain "system library" protos; install manually
+  unarchive:
+    creates: /usr/local/bin/protoc
+    src: https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-linux-x86_64.zip
+    dest: /usr/local/
+    # not ideal; protos end up like this too
+    mode: 0755
+    remote_src: true

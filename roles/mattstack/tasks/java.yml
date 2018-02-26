@@ -1,0 +1,6 @@
+---
+- name: install java dev stuff
+  apt: name={{item}} state=installed
+  with_items:
+    - openjdk-8-jdk
+    - openjdk-9-jdk

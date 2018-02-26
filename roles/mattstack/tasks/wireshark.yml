@@ -10,3 +10,9 @@
   with_items:
           - wireshark
           - ettercap-text-only
+          - nmap
+          - traceroute
+          - socat
+          - iperf3
+          - httping
+          - ipcalc

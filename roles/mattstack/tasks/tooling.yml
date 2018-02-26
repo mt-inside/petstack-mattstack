@@ -41,6 +41,7 @@
           - acpi-call-dkms
           - acpitail
           - numactl
+          - pv
 - name: install dev pkgs
   apt: name={{item}} state=installed
   with_items:
@@ -49,6 +50,8 @@
   apt: name={{item}} state=installed
   with_items:
           - qemu-kvm
+          - qemu-user-static
+          #- qemu-user-binfmt # seems to rely on qemu-user (non-static), and try to replace -static with that
           - libvirt-bin
           - bridge-utils
 - name: add {{ admin_user }} to libvirt group

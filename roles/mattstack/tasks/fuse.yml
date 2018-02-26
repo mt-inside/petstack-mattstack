@@ -1,5 +1,5 @@
 ---
-- name: install go stuff
+- name: install FUSE dev stuff
   apt: name={{item}} state=installed
   with_items:
-    - golang-go
+    - libfuse-dev

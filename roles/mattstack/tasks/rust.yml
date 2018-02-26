@@ -1,5 +1,6 @@
 ---
-- name: install go stuff
+- name: install rust stuff
   apt: name={{item}} state=installed
   with_items:
-    - golang-go
+    - rustc
+    - cargo
