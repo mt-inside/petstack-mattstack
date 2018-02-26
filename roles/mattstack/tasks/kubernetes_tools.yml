@@ -23,6 +23,19 @@
 # TODO (tag with "completion") symlink /usr/share/google-cloud-sdk /home/matt/.completion.d/gcloud
 # TODO (tag with "completion") run kubectl completion > /home/matt/.completion.d/kubectl
 
+# No apt package atm
+# TODO pin version
+- name: download helm
+  get_url:
+    # do not download if it exists
+    force: no
+    url: https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get
+    dest: /tmp/get-helm
+    mode: 0775
+- name: install helm
+  command: /tmp/get-helm
+  args:
+    creates: /usr/local/bin/helm
 - name: download istioctl
   unarchive:
     creates: /tmp/istio-{{istio_version}}/
@@ -31,6 +44,7 @@
     remote_src: true
 - name: install istioctl
   copy:
+    force: no
     remote_src: true
     src: /tmp/istio-{{istio_version}}/bin/istioctl
     dest: /usr/local/bin/
