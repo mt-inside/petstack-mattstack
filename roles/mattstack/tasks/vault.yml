@@ -1,7 +1,8 @@
 ---
 - name: download and install vault binary
   unarchive:
-    creates: /usr/local/bin/vault
-    src: https://releases.hashicorp.com/vault/0.9.1/vault_0.9.1_linux_amd64.zip
+    # No way to tell if it's updated
+    #creates: /usr/local/bin/vault
+    src: https://releases.hashicorp.com/vault/{{vault_version}}/vault_{{vault_version}}_linux_amd64.zip
     dest: /usr/local/bin/
     remote_src: true

@@ -44,7 +44,8 @@
     remote_src: true
 - name: install istioctl
   copy:
-    force: no
+    # No way to tell if it's been updated
+    force: yes
     remote_src: true
     src: /tmp/istio-{{istio_version}}/bin/istioctl
     dest: /usr/local/bin/
