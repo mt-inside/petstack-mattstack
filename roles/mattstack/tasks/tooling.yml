@@ -50,6 +50,7 @@
   apt: name={{item}} state=installed
   with_items:
           - qemu-kvm
+          - qemu-system-arm
           - qemu-user-static
           #- qemu-user-binfmt # seems to rely on qemu-user (non-static), and try to replace -static with that
           - libvirt-bin
@@ -57,7 +58,7 @@
 - name: add {{ admin_user }} to libvirt group
   user:
           name: "{{ admin_user }}"
-          groups: [libvirt, libvirt-qemu]
+          groups: [libvirt, libvirt-qemu, kvm]
           append: yes
 - name: install graphics packages
   apt: name={{item}} state=installed
