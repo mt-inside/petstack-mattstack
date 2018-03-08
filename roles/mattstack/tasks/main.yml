@@ -15,4 +15,5 @@
 - include: protobuf.yml tags=protobuf
 - include: rust.yml tags=rust
 - include: java.yml tags=java
+- include: python.yml tags=python
 - include: uninstall.yml tags=uninstall

@@ -1,0 +1,9 @@
+---
+# Do as much python stuff as possible in docker
+# Failing that, a venv
+# This installs the minimum to be able to create venvs
+- name: install venv
+  apt: name={{item}} state=installed
+  with_items:
+    - python3-venv
+    - virtualenv  # python 2
