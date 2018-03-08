@@ -1,0 +1,21 @@
+---
+- name: install AWS factory CLI
+  apt: name={{item}} state=installed
+  with_items:
+          - awscli
+
+- name: install awless
+  unarchive:
+    creates: /usr/local/bin/awless
+    # Only contains one file
+    src: https://github.com/wallix/awless/releases/download/v0.1.9/awless-linux-amd64.tar.gz
+    dest: /usr/local/bin/
+    remote_src: true
+
+- name: install terraform
+  unarchive:
+    creates: /usr/local/bin/terraform
+    # Only contains one file
+    src: https://releases.hashicorp.com/terraform/0.11.3/terraform_0.11.3_linux_amd64.zip
+    dest: /usr/local/bin/
+    remote_src: true
