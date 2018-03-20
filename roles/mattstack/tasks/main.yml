@@ -7,6 +7,7 @@
 - include: kubernetes_tools.yml tags=kubernetes_tools
 - include: aws.yml tags=aws
 - include: spotify.yml tags=spotify
+- include: slack.yml tags=slack
 #- include: evernote.yml tags=evernote
 - include: chrome.yml tags=chrome
 - include: vault.yml tags=vault

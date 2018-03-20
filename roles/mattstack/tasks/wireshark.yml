@@ -9,7 +9,7 @@
   apt: name={{item}} state=installed
   with_items:
           - wireshark
-          - ettercap-text-only
+          #- ettercap-text-only depends on libcurl4
           - nmap
           - traceroute
           - socat
