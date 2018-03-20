@@ -28,7 +28,10 @@
           - tmux
           #- curl depends on libcurl4
           - jq
+          - httpie
           - bash-completion
+          - pwgen
+          - openvpn
 - name: install hardware pkgs
   apt: name={{item}} state=installed
   with_items:
