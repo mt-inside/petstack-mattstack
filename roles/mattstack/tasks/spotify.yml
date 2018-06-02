@@ -10,7 +10,13 @@
           repo: deb http://repository.spotify.com stable non-free
           state: present
 
+# Like slack, spotify-client depends on libcurl3. Force it to install
+# anyway.
+# As of 26/3/18, Spotify doesn't work like this
 - name: install spotify pkgs
-  apt: name={{item}} state=installed
+  apt:
+    name: "{{item}}"
+    state: installed
+    dpkg_options: 'force-depends'
   with_items:
           - spotify-client

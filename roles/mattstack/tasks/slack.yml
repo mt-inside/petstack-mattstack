@@ -1,5 +1,19 @@
 ---
+# Slack depends (seemingly transitively) on libcurl3. This is incompatible
+# with libcurl4 (qv), which is needed for, idk, cURL (cli).
+# Thus, we manually install the slack package, ignoring its sepcified
+# dependancy.
+# As of 26/3/18, this seems to work
+# - name: install slack
+#   apt: name={{item}} state=installed
+#   with_items:
+#       - slack-desktop
+
+
 - name: install slack
-  apt: name={{item}} state=installed
+  apt:
+    name: "{{item}}"
+    state: installed
+    dpkg_options: 'force-depends'
   with_items:
       - slack-desktop

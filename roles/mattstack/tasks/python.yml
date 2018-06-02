@@ -7,3 +7,4 @@
   with_items:
     - python3-venv
     - virtualenv  # python 2
+    - virtualenvwrapper  # python 2, from readthedocs, to make tooking venvs easier

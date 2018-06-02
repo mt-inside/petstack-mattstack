@@ -6,6 +6,7 @@
     owner: root
     group: root
     mode: 0644
+    # TODO: add console= and resume=, if they work
 
 - name: Update Grub
   command: update-grub

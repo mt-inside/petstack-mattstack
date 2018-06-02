@@ -7,6 +7,7 @@
           - ca-certificates
           - software-properties-common
           - debconf-utils
+          # - ntp # not necessary, indeed conflicts with systemd-timesyncd
 - name: install filesystems
   apt: name={{item}} state=installed
   with_items:
@@ -16,6 +17,13 @@
   with_items:
           - ebtables
           - ethtool
+- name: install BPF tooling
+  apt: name={{item}} state=installed
+  with_items:
+          - bcc
+          - bpfcc-tools
+          - linux-tools-common  # user space
+          - linux-tools-generic  # kernel space
 - name: install system mgmt packages
   apt: name={{item}} state=installed
   with_items:
@@ -46,6 +54,7 @@
           - acpitail
           - numactl
           - pv
+          - sysstat
 - name: install dev pkgs
   apt: name={{item}} state=installed
   with_items:
@@ -69,6 +78,7 @@
   with_items:
           - inkscape
           - imagemagick
+          - graphviz
           - gimp
 - name: install github cmdline
   unarchive:

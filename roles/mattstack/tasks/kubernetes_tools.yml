@@ -27,15 +27,11 @@
 # TODO pin version
 - name: download helm
   get_url:
-    # do not download if it exists
-    force: no
     url: https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get
     dest: /tmp/get-helm
     mode: 0775
 - name: install helm
   command: /tmp/get-helm
-  args:
-    creates: /usr/local/bin/helm
 - name: download istioctl
   unarchive:
     creates: /tmp/istio-{{istio_version}}/
@@ -44,27 +40,22 @@
     remote_src: true
 - name: install istioctl
   copy:
-    # No way to tell if it's been updated
-    force: yes
     remote_src: true
     src: /tmp/istio-{{istio_version}}/bin/istioctl
     dest: /usr/local/bin/
     mode: 0755
 - name: install minikube
   get_url:
-    force: no
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
     dest: /usr/local/bin/minikube
     mode: 0775
 - name: install minikube kvm2 driver
   get_url:
-    force: no
     url: https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2
     dest: /usr/local/bin/docker-machine-driver-kvm2
     mode: 0775
 - name: install sKaffold
   get_url:
-    force: no
     url: https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
     dest: /usr/local/bin/skaffold
     mode: 0775
