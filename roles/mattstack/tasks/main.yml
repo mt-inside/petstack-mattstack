@@ -9,6 +9,7 @@
 #- include: spotify.yml tags=spotify
 #- include: slack.yml tags=slack
 #- include: evernote.yml tags=evernote
+- include: text.yml tags=text
 - include: chrome.yml tags=chrome
 - include: vault.yml tags=vault
 - include: fuse.yml tags=fuse
